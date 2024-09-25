@@ -1,23 +1,100 @@
 # CMakeLists.txt
 # CMake Version
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.8)
 # Project Name
-project(GL42 LANGUAGES CXX VERSION 1.0.0 DESCRIPTION "My Graphics Library for 42Türkiye")
-# Add Executable
-add_library(gl42 STATIC)
-
-set(SOURCE_DIR src)
-INCLUDE_DIRECTORIES(inc)
-
-# Add Source Files
-target_sources(gl42 PRIVATE
-	$(SOURCE_DIR)/window/window.cpp
-	$(SOURCE_DIR)/exception/exception.cpp
-)
-
-target_include_directories()
-
+project(gl42 LANGUAGES CXX VERSION 1.0.0 DESCRIPTION "My Graphics Library for 42Türkiye")
 # CPP Standard
-set(CMAKE_CXX_STANDARD 21)
+set(CMAKE_CXX_STANDARD 20)
 # CPP Standard Required
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(lib/glfw)
+add_subdirectory(lib/glew/build/cmake)
+
+#################################STATIC#################################
+
+add_library(gl42Static STATIC)
+
+target_include_directories(gl42Static
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
+)
+
+target_link_directories(gl42Static
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
+)
+
+target_link_libraries(gl42Static
+	PUBLIC glfw
+	PUBLIC glew
+)
+
+target_compile_options(gl42Static
+	PRIVATE -std=c++20
+	PRIVATE -Wall
+	PRIVATE -Wextra
+	PRIVATE -Werror
+	PRIVATE -g
+)
+
+target_sources(gl42Static
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
+)
+
+#################################SHARED#################################
+
+add_library(gl42Shared SHARED)
+
+target_include_directories(gl42Shared
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
+)
+
+target_link_directories(gl42Shared
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
+)
+
+target_link_libraries(gl42Shared
+	PUBLIC glfw
+	PUBLIC glew
+)
+
+target_compile_options(gl42Shared
+	PRIVATE -std=c++20
+	PRIVATE -Wall
+	PRIVATE -Wextra
+	PRIVATE -Werror
+	PRIVATE -g
+)
+
+target_sources(gl42Shared
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
+)
+
+#################################OUTPUT#################################
+
+if (WIN32)
+	set_target_properties(gl42Static PROPERTIES
+		ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+	)
+
+	set_target_properties(gl42Shared PROPERTIES
+		LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+	)
+else()
+	set_target_properties(gl42Static PROPERTIES
+		ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+		OUTPUT_NAME gl42
+	)
+
+	set_target_properties(gl42Shared PROPERTIES
+		LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+		OUTPUT_NAME gl42
+	)
+endif()

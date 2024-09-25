@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.hpp                                         :+:      :+:    :+:   */
+/*   Window.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:59:51 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/16 19:36:41 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/09/25 21:00:26 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <string>
 
 namespace gl42

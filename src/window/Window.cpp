@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.cpp                                         :+:      :+:    :+:   */
+/*   Window.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:01:25 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/16 19:37:49 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/09/25 20:58:20 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#include "window.hpp"
+#include "Window.hpp"
 #include "InitializationExecption.hpp"
 
 gl42::Window::Window(int width, int height, const std::string &title, GLFWmonitor *monitor, GLFWwindow *share)
