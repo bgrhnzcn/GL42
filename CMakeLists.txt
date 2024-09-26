@@ -9,7 +9,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(lib/glfw)
-add_subdirectory(lib/glew/build/cmake)
 
 #################################STATIC#################################
 
@@ -28,7 +27,6 @@ target_link_directories(gl42Static
 
 target_link_libraries(gl42Static
 	PUBLIC glfw
-	PUBLIC glew
 )
 
 target_compile_options(gl42Static
@@ -61,7 +59,6 @@ target_link_directories(gl42Shared
 
 target_link_libraries(gl42Shared
 	PUBLIC glfw
-	PUBLIC glew
 )
 
 target_compile_options(gl42Shared
