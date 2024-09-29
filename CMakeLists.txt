@@ -16,6 +16,7 @@ add_library(gl42Static STATIC)
 
 target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 )
@@ -39,6 +40,7 @@ target_compile_options(gl42Static
 
 target_sources(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
 )
 
@@ -48,6 +50,7 @@ add_library(gl42Shared SHARED)
 
 target_include_directories(gl42Shared
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 )
@@ -71,6 +74,7 @@ target_compile_options(gl42Shared
 
 target_sources(gl42Shared
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
 )
 

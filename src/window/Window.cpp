@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:01:25 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/25 20:58:20 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/30 00:19:57 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ gl42::Window::Window(int width, int height, const std::string &title, GLFWmonito
 		glfwTerminate();
 		throw new gl42::InitializationExecption;
 	}
+	glfwMakeContextCurrent(this->win_ptr);
+	this->isActive = true;
 }
 
 gl42::Window::~Window()
@@ -47,9 +49,9 @@ int gl42::Window::getHeight() const
 	return (this->height);
 }
 
-void gl42::Window::setWindowHint(int hint, int value)
+bool gl42::Window::getIsActive() const
 {
-	glfwWindowHint(hint, value);
+	return (this->isActive);
 }
 
 bool gl42::Window::shouldClose()
@@ -60,4 +62,21 @@ bool gl42::Window::shouldClose()
 void gl42::Window::setShouldClose()
 {
 	glfwSetWindowShouldClose(this->win_ptr, true);
+}
+
+void gl42::Window::attach()
+{
+	glfwMakeContextCurrent(this->win_ptr);
+	this->isActive = true;
+}
+
+void gl42::Window::detach()
+{
+	glfwMakeContextCurrent(nullptr);
+	this->isActive = false;
+}
+
+void gl42::Window::setWindowHint(int hint, int value)
+{
+	glfwWindowHint(hint, value);
 }
