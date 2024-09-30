@@ -1,12 +1,16 @@
 # CMakeLists.txt
 # CMake Version
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.9)
 # Project Name
 project(gl42 LANGUAGES CXX VERSION 1.0.0 DESCRIPTION "My Graphics Library for 42Türkiye")
 # CPP Standard
 set(CMAKE_CXX_STANDARD 20)
 # CPP Standard Required
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(OpenGL_GL_PREFERENCE GLVND)
+
+find_package(OpenGL REQUIRED)
 
 add_subdirectory(lib/glfw)
 
@@ -18,6 +22,7 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 )
 
@@ -28,6 +33,7 @@ target_link_directories(gl42Static
 
 target_link_libraries(gl42Static
 	PUBLIC glfw
+	PUBLIC GL
 )
 
 target_compile_options(gl42Static
@@ -42,6 +48,9 @@ target_sources(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
 )
 
 #################################SHARED#################################
@@ -52,6 +61,7 @@ target_include_directories(gl42Shared
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 )
 
@@ -76,6 +86,9 @@ target_sources(gl42Shared
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
 )
 
 #################################OUTPUT#################################

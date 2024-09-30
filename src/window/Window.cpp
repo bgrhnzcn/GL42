@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:01:25 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/30 00:19:57 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:13:26 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 gl42::Window::Window(int width, int height, const std::string &title, GLFWmonitor *monitor, GLFWwindow *share)
 	: title(title), width(width), height(height)
 {
+	setWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	setWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	setWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	this->win_ptr = glfwCreateWindow(this->width, this->height, this->title.c_str(), monitor, share);
 	if (this->win_ptr == nullptr)
 	{
-		std::cout << "Window Initialization Failed" << std::endl;
+		const char *error;
+		glfwGetError(&error);
+		std::cout << "[GL42 Error]: Window: Window Initialization Failed: " << error << std::endl;
 		glfwTerminate();
-		throw new gl42::InitializationExecption;
+		return;
 	}
 	glfwMakeContextCurrent(this->win_ptr);
 	this->isActive = true;
@@ -74,6 +79,12 @@ void gl42::Window::detach()
 {
 	glfwMakeContextCurrent(nullptr);
 	this->isActive = false;
+}
+
+void gl42::Window::updateWindow()
+{
+	glfwSwapBuffers(this->win_ptr);
+	glfwPollEvents();
 }
 
 void gl42::Window::setWindowHint(int hint, int value)

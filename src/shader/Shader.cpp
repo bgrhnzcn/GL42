@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:09:03 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/29 23:49:52 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/01 01:39:54 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <GL/gl.h>
 
+#include "Error.hpp"
 #include "Shader.hpp"
 
 gl42::Shader::Shader(const std::string& sourcePath)
@@ -26,22 +27,22 @@ gl42::Shader::Shader(const std::string& sourcePath)
 	unsigned int vertexShader = compileShader(GL_VERTEX_SHADER);
 	unsigned int fragmentShader = compileShader(GL_FRAGMENT_SHADER);
 
-	this->shaderId = glCreateProgram();
+	GLCall(this->shaderId = glCreateProgram());
 
-	glAttachShader(this->shaderId, vertexShader);
-	glAttachShader(this->shaderId, fragmentShader);
+	GLCall(glAttachShader(this->shaderId, vertexShader));
+	GLCall(glAttachShader(this->shaderId, fragmentShader));
 
-	glLinkProgram(this->shaderId);
+	GLCall(glLinkProgram(this->shaderId));
 
-	glValidateProgram(this->shaderId);
+	GLCall(glValidateProgram(this->shaderId));
 
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	GLCall(glDeleteShader(vertexShader));
+	GLCall(glDeleteShader(fragmentShader));
 }
 
 gl42::Shader::~Shader()
 {
-	glDeleteProgram(this->shaderId);
+	GLCall(glDeleteProgram(this->shaderId));
 }
 
 void gl42::Shader::readSource(const std::string& sourcePath)
@@ -63,7 +64,7 @@ unsigned int gl42::Shader::compileShader(unsigned int type)
 	int length;
 	int result;
 	
-	unsigned int shader = glCreateShader(type);
+	GLCall(unsigned int shader = glCreateShader(type));
 
 	if (type == GL_VERTEX_SHADER)
 	{
@@ -78,16 +79,16 @@ unsigned int gl42::Shader::compileShader(unsigned int type)
 		code[2] = this->sourceCode.c_str();
 	}
 
-	glShaderSource(shader, 3, code, NULL);
-	glCompileShader(shader);
+	GLCall(glShaderSource(shader, 3, code, NULL));
+	GLCall(glCompileShader(shader));
 
-	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+	GLCall(glGetShaderiv(shader, GL_COMPILE_STATUS, &result));
 	std::cout << result << std::endl;
 	if (result == GL_NO_ERROR)
 	{
-		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+		GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length));
 		char log[length];
-		glGetShaderInfoLog(shader, length, NULL, log);
+		GLCall(glGetShaderInfoLog(shader, length, NULL, log));
 		std::cerr
 			<< "gl42: Shader: "
 			<< this->sourcePath
@@ -106,5 +107,10 @@ unsigned int gl42::Shader::compileShader(unsigned int type)
 //
 void gl42::Shader::use()
 {
-	glUseProgram(this->shaderId);
+	GLCall(glUseProgram(this->shaderId));
+}
+
+unsigned int gl42::Shader::getShaderId()
+{
+	return this->shaderId;
 }

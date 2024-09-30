@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl42.hpp                                           :+:      :+:    :+:   */
+/*   Color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 13:46:26 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/30 18:47:03 by bgrhnzcn         ###   ########.fr       */
+/*   Created: 2024/09/30 23:23:46 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/10/01 01:49:59 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-#include <GLFW/glfw3.h>
-#include "InitializationExecption.hpp"
-#include "Window.hpp"
-#include "Shader.hpp"
-#include "Error.hpp"
-#include "Vector2.hpp"
-#include "Vector3.hpp"
+namespace gl42
+{
+	class Color
+	{
+		private:
+			float r;
+			float g;
+			float b;
+			float a;
+		public:
+			Color();
+			Color(float r, float g, float b, float a);
+			Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+			~Color() = default;
+		public:
+			Color lerp(float val, Color &min, Color &max);
+	};
+}

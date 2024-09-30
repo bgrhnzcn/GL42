@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:09:09 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/30 00:24:18 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/01 01:39:38 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ namespace gl42
 			 * @param[in] type \b GL_VERTEX_SHADER or \b GL_FRAGMENT_SHADER.
 			 * @return Returns the ID of the compiled shader.
 			 * 
-			 * This ID not the same as class field \ref shaderId.
-			 * See detailed description of the class ( \ref Shader ) for better information.
+			 * This ID not the same as class field shaderId.
+			 * See detailed description of the class for better information.
 			 */
 			unsigned int compileShader(unsigned int type);
 			//void combineShader();
@@ -79,6 +79,7 @@ namespace gl42
 			 * @brief Use the shader program.
 			 */
 			void use();
+			unsigned int getShaderId();
 	};
 }
 

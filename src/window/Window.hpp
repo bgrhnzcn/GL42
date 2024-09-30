@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:59:51 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/30 01:17:51 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:06:12 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ namespace gl42
 			/**
 			 * @brief Construct a new Window object.
 			 * 
-			 * Creates a window with given \ref width, \ref height and \ref title.
+			 * Creates a window with given width, height and title.
 			 * @param[in] width Width of the window.
 			 * @param[in] height Height of the window.
 			 * @param[in] title Title of the window.
@@ -66,22 +66,22 @@ namespace gl42
 			 * @{
 			 */
 			/**
-			 * @brief Get the \ref width of the window.
+			 * @brief Get the width of the window.
 			 * 
-			 * @return \ref width of the window.
+			 * @return width of the window.
 			 */
 			int getWidth() const;
 			/**
-			 * @brief Get the \ref height of the window.
+			 * @brief Get the height of the window.
 			 * 
-			 * @return \ref height of the window.
+			 * @return height of the window.
 			 */
 			int getHeight() const;
 			/**
 			 * @brief Get the is active flag.
 			 * 
-			 * @return If window is the current OpenGL context returns true
-			 * @return otherwise false 
+			 * @return If window is the current OpenGL context returns \b true
+			 * @return otherwise \b false
 			 */
 			bool getIsActive() const;
 			/**
@@ -112,6 +112,12 @@ namespace gl42
 			 * This function detach the window and makes it not the current OpenGL context.
 			 */
 			void detach();
+			/**
+			 * @brief Swaps buffers and poll callbacks to update window.
+			 * 
+			 * @details
+			 */
+			void updateWindow();
 		public:
 			/**
 			 * @brief Set the window hint.
