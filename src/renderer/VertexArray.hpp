@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl42.hpp                                           :+:      :+:    :+:   */
+/*   VertexArray.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 13:46:26 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/02 01:20:47 by bgrhnzcn         ###   ########.fr       */
+/*   Created: 2024/10/01 14:00:41 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/10/02 00:53:27 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-//#include "OpenGLDecl.hpp"
-#include "InitializationExecption.hpp"
-#include "Window.hpp"
-#include "Shader.hpp"
-#include "Error.hpp"
-#include "Vector2.hpp"
-#include "Vector3.hpp"
-#include "VertexBuffer.hpp"
-#include "VertexArray.hpp"
-#include "Math.hpp"
+namespace gl42
+{
+	class VertexArray
+	{
+		private:
+			unsigned int vbId;
+		public:
+			VertexArray();
+			~VertexArray();
+		public:
+			void bind();
+			void unbind();
+	};
+}

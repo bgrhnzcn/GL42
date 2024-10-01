@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl42.hpp                                           :+:      :+:    :+:   */
+/*   OpenGLDecl.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 13:46:26 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/02 01:20:47 by bgrhnzcn         ###   ########.fr       */
+/*   Created: 2024/10/02 00:53:13 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/10/02 00:54:15 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-//#include "OpenGLDecl.hpp"
-#include "InitializationExecption.hpp"
-#include "Window.hpp"
-#include "Shader.hpp"
-#include "Error.hpp"
-#include "Vector2.hpp"
-#include "Vector3.hpp"
-#include "VertexBuffer.hpp"
-#include "VertexArray.hpp"
-#include "Math.hpp"
+#define GL_SILENCE_DEPRECATION
+#define GL_GLEXT_PROTOTYPES
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GLFW/glfw3.h>

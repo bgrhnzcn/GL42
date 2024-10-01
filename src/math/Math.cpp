@@ -45,10 +45,10 @@ float gl42::Math::toRadian(float degree)
 
 float gl42::Math::sin(float rad)
 {
-	return sin(rad);
+	return ::sin(rad);
 }
 
 float gl42::Math::cos(float rad)
 {
-	return cos(rad);
+	return ::cos(rad);
 }

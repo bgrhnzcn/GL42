@@ -19,74 +19,81 @@ add_subdirectory(lib/glfw)
 add_library(gl42Static STATIC)
 
 target_include_directories(gl42Static
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
-)
-
-target_link_directories(gl42Static
+	)
+	
+	target_link_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
-)
-
-target_link_libraries(gl42Static
+	)
+	
+	target_link_libraries(gl42Static
 	PUBLIC glfw
 	PUBLIC GL
-)
-
-target_compile_options(gl42Static
+	)
+	
+	target_compile_options(gl42Static
 	PRIVATE -std=c++20
 	PRIVATE -Wall
 	PRIVATE -Wextra
 	PRIVATE -Werror
+	PRIVATE -O2
 	PRIVATE -g
-)
-
-target_sources(gl42Static
-	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	)
+	
+	target_sources(gl42Static
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Math.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
-)
-
-#################################SHARED#################################
-
-add_library(gl42Shared SHARED)
-
-target_include_directories(gl42Shared
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/window
+	)
+	
+	#################################SHARED#################################
+	
+	add_library(gl42Shared SHARED)
+	
+	target_include_directories(gl42Shared
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/exception
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
-)
-
-target_link_directories(gl42Shared
+	)
+	
+	target_link_directories(gl42Shared
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
-)
-
-target_link_libraries(gl42Shared
+	)
+	
+	target_link_libraries(gl42Shared
 	PUBLIC glfw
-)
-
-target_compile_options(gl42Shared
+	)
+	
+	target_compile_options(gl42Shared
 	PRIVATE -std=c++20
 	PRIVATE -Wall
 	PRIVATE -Wextra
 	PRIVATE -Werror
 	PRIVATE -g
-)
-
-target_sources(gl42Shared
-	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window/Window.cpp
+	)
+	
+	target_sources(gl42Shared
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/InitializationExecption.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/exception/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Math.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
 )

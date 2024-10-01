@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:00:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/01 01:15:21 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:25:37 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ namespace gl42
 			 * @param max 
 			 * @return float 
 			 */
-			inline static float normalize(float val, float min, float max);
-			inline static float lerp(float val, float min, float max);
-			inline static float map(float val, Vector2 in, Vector2 out);
-			inline static float map(float val, float inMin, float inMax, float outMin, float outMax);
-			inline static float toDegree(float rad);
-			inline static float toRadian(float degree);
-			inline static float sin(float rad);
-			inline static float cos(float rad);
+			static float normalize(float val, float min, float max);
+			static float lerp(float val, float min, float max);
+			static float map(float val, Vector2 in, Vector2 out);
+			static float map(float val, float inMin, float inMax, float outMin, float outMax);
+			static float toDegree(float rad);
+			static float toRadian(float degree);
+			static float sin(float rad);
+			static float cos(float rad);
 	};
 }
