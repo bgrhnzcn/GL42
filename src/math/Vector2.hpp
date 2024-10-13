@@ -6,11 +6,13 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/30 23:18:02 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:20:42 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "vec2.hpp"
 
 namespace gl42
 {
@@ -32,14 +34,21 @@ namespace gl42
 					/// @brief Y value of the vector
 					float y;
 				};
-				/// @brief Array representation of the vector
 				float data[2];
 			};
-		public:
 			/**
 			 * @name Constructors and Destructor
 			 * @{
 			 */
+		public:
+			/**
+			 * @brief Construct a new Vector2 object from glm::vec2
+			 * 
+			 * @details Initializes the vector with a glm::vec2.
+			 * 
+			 * @param[in] vec from glm::vec2.
+			 */
+			Vector2(const glm::vec2 &vec);
 			/**
 			 * @brief Construct a new Vector2 object
 			 * 
@@ -77,6 +86,7 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
+			operator glm::vec2() const;
 			/**
 			 * @brief Addition operator.
 			 * 
@@ -113,13 +123,15 @@ namespace gl42
 			 * Same means difference of each value smaller than \b EPSILON.
 			 */
 			bool operator==(const Vector2 &vec) const;
+
+		public:
 			/**
 			 * @brief Dot product of two vector.
 			 * 
 			 * Dot product is a commutative operation. (Order doesn't affect the result.)
 			 * @return Return a scaler result.
 			 */
-			float dotProdcut(const Vector2 &vec) const;
+			float dotProduct(const Vector2 &vec) const;
 			/**
 			 * @brief Magnitude (Size or length) of this vector.
 			 * 

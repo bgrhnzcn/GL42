@@ -6,11 +6,13 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/11 17:19:20 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/13 00:37:50 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "vec4.hpp"
 
 namespace gl42
 {
@@ -22,28 +24,34 @@ namespace gl42
 	 */
 	class Vector4
 	{
+		private:
+			glm::vec4 data;
 		public:
-			union
+			struct
 			{
-				struct
-				{
-					/// @brief X value of the vector
-					float x;
-					/// @brief Y value of the vector
-					float y;
-					/// @brief Z value of the vector
-					float z;
-					/// @brief W value of the vector
-					float w;
-				};
-				/// @brief Array representation of the vector
-				float data[4];
+				/// @brief X value of the vector
+				float &x;
+				/// @brief Y value of the vector
+				float &y;
+				/// @brief Z value of the vector
+				float &z;
+				/// @brief W value of the vector
+				float &w;
 			};
-		public:
 			/**
 			 * @name Constructors and Destructor
 			 * @{
 			 */
+		private:
+			/**
+			 * @brief Construct a new Vector4 object from glm::vec4
+			 * 
+			 * @details Initializes the vector with a glm::vec4.
+			 * 
+			 * @param[in] vec from glm::vec4.
+			 */
+			Vector4(const glm::vec4 &vec);
+		public:
 			/**
 			 * @brief Construct a new Vector4 object
 			 * 
@@ -71,7 +79,7 @@ namespace gl42
 			Vector4(float x, float y, float z, float w);
 			/**
 			 * @brief Destroy the Vector4 object
-			 * 
+			 *
 			 * @details Default destructor.
 			 */
 			~Vector4();
