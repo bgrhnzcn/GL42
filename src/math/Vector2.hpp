@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 03:20:42 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/13 14:54:54 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ namespace gl42
 			 * 
 			 * @param[in] vec from glm::vec2.
 			 */
-			Vector2(const glm::vec2 &vec);
+			Vector2(const ::glm::vec2 &vec);
 			/**
 			 * @brief Construct a new Vector2 object
 			 * 
@@ -86,7 +86,7 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
-			operator glm::vec2() const;
+			operator ::glm::vec2() const;
 			/**
 			 * @brief Addition operator.
 			 * 

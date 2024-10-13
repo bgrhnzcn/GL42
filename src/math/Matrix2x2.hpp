@@ -6,14 +6,14 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 03:20:25 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:06:10 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "matrix.hpp"
 #include "Vector2.hpp"
+#include "mat2x2.hpp"
 
 namespace gl42
 {
@@ -105,7 +105,7 @@ class gl42::Matrix2x2
 		 * @{
 		 */
 		operator glm::mat2() const;
-		Matrix2x2 operator=(const Matrix2x2 &other);
+		void operator=(const Matrix2x2 &other);
 		/**
 		 * @brief Addition operator.
 		 * 

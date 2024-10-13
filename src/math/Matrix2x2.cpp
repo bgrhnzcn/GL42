@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 02:36:05 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 03:26:14 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/13 14:32:00 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,12 @@ gl42::Matrix2x2::operator glm::mat2() const
 	return glm::mat2(data[0], data[2], data[1], data[3]);
 }
 
-gl42::Matrix2x2 gl42::Matrix2x2::operator=(const Matrix2x2 &other)
+void gl42::Matrix2x2::operator=(const Matrix2x2 &other)
 {
-	return Matrix2x2(other);
+	data[0] = other[0];
+	data[1] = other[1];
+	data[2] = other[2];
+	data[3] = other[3];
 }
 
 gl42::Matrix2x2 gl42::Matrix2x2::operator+(const Matrix2x2 &other)
