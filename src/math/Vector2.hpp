@@ -6,13 +6,14 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 14:54:54 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:40:42 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "vec2.hpp"
+#include "ILogable.hpp"
 
 namespace gl42
 {
@@ -22,7 +23,7 @@ namespace gl42
 	 * @details This class is used to represent 2D vectors.
 	 * For detailed information about [Vectors](https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics))
 	 */
-	class Vector2
+	class Vector2 : public ILogable
 	{
 		public:
 			union
@@ -123,7 +124,6 @@ namespace gl42
 			 * Same means difference of each value smaller than \b EPSILON.
 			 */
 			bool operator==(const Vector2 &vec) const;
-
 		public:
 			/**
 			 * @brief Dot product of two vector.
@@ -148,12 +148,13 @@ namespace gl42
 			/**
 			 * @brief Distance of two vector.
 			 * 
-			 * @param vec Target vector to calculate distance.
+			 * @param to Target vector to calculate distance.
 			 * @return Distance betwen this vector and given vector.
 			 */
-			float distance(const Vector2 &vec) const;
+			float distance(const Vector2 &to) const;
 			/**
 			 * @}
 			 */
+			void PrintLog() const override;
 	};
 }

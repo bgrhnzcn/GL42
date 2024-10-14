@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   InitializationExecption.cpp                        :+:      :+:    :+:   */
+/*   ILogable.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 18:44:26 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/11 18:53:39 by buozcan          ###   ########.fr       */
+/*   Created: 2024/10/15 01:02:42 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/10/15 01:40:49 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <exception>
+#pragma once
 
-#include "InitializationExecption.hpp"
-
-const char *gl42::InitializationExecption::what() const noexcept
+namespace gl42
 {
-	return "Deneme";
+	class ILogable
+	{
+		public:
+			virtual void PrintLog() const = 0;
+	};
 }

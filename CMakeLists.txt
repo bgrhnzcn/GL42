@@ -21,6 +21,7 @@ add_library(gl42Static STATIC)
 
 target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
@@ -52,8 +53,8 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
-	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/InitializationExecption.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/debug/Debug.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Math.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
@@ -67,6 +68,7 @@ target_include_directories(gl42Static
 	
 	target_include_directories(gl42Shared
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
@@ -96,8 +98,8 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
-	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/InitializationExecption.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/Error.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/debug/Debug.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Math.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector2.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp

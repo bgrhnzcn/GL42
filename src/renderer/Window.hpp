@@ -6,13 +6,14 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:59:51 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/30 18:06:12 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/15 00:41:00 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <GLFW/glfw3.h>
+#include "OpenGLDecl.hpp"
+
 #include <string>
 
 namespace gl42
@@ -49,7 +50,7 @@ namespace gl42
 			 * @param[in] monitor Specify monitor pointer to fullscreen window. Use nullptr for windowed mode.
 			 * @param[in] share The window whose context to share resources with. Use nullptr to not share resources.
 			 */
-			Window(int width, int height, const std::string &title, GLFWmonitor *monitor, GLFWwindow *share);
+			Window(int width, int height, const std::string &title);
 			/**
 			 * @brief Destroy the Window object
 			 * 

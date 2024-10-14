@@ -6,9 +6,11 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:33:30 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 14:53:45 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:40:28 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
 
 #include "Math.hpp"
 #include "Vector2.hpp"
@@ -95,7 +97,12 @@ gl42::Vector2 gl42::Vector2::normalize() const
 	return (*this) / this->magnitude();
 }
 
-float gl42::Vector2::distance(const Vector2 &vec) const
+float gl42::Vector2::distance(const Vector2 &to) const
 {
-	return ((*this) - vec).magnitude();
+	return ((*this) - to).magnitude();
+}
+
+void gl42::Vector2::PrintLog() const
+{
+	std::cout << "(" << this->x << ", " << this->y << ")";
 }

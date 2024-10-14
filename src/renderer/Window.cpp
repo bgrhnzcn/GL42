@@ -6,22 +6,21 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:01:25 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/30 18:13:26 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:48:39 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 #include "Window.hpp"
-#include "InitializationExecption.hpp"
 
-gl42::Window::Window(int width, int height, const std::string &title, GLFWmonitor *monitor, GLFWwindow *share)
+gl42::Window::Window(int width, int height, const std::string &title)
 	: title(title), width(width), height(height)
 {
 	setWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	setWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 	setWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	this->win_ptr = glfwCreateWindow(this->width, this->height, this->title.c_str(), monitor, share);
+	this->win_ptr = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
 	if (this->win_ptr == nullptr)
 	{
 		const char *error;

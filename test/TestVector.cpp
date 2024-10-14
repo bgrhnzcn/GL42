@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OpenGLDecl.hpp                                     :+:      :+:    :+:   */
+/*   TestVector.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 00:53:13 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/15 00:40:47 by bgrhnzcn         ###   ########.fr       */
+/*   Created: 2024/10/15 00:47:57 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/10/15 00:55:17 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include <gl42.hpp>
 
-#define GL_SILENCE_DEPRECATION
-#define GL_GLEXT_PROTOTYPES
-
-#ifdef __APPLE__
-#	include <OpenGL/gl3.h>
-#	include <OpenGL/glu.h>
-#	include <GLFW/glfw3.h>
-#endif
-
-#ifdef __linux__
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GLFW/glfw3.h>
-#endif
+int	main()
+{
+	gl42::Vector2 vec1 = gl42::Vector2(1,0);
+	gl42::Vector2 vec2 = gl42::Vector2(0,1);
+}
