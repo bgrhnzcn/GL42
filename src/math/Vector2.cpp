@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:33:30 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/15 01:40:28 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:25:24 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,4 @@ gl42::Vector2 gl42::Vector2::normalize() const
 float gl42::Vector2::distance(const Vector2 &to) const
 {
 	return ((*this) - to).magnitude();
-}
-
-void gl42::Vector2::PrintLog() const
-{
-	std::cout << "(" << this->x << ", " << this->y << ")";
 }

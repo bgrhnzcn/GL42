@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/15 01:40:42 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:25:07 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace gl42
 	 * @details This class is used to represent 2D vectors.
 	 * For detailed information about [Vectors](https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics))
 	 */
-	class Vector2 : public ILogable
+	class Vector2
 	{
 		public:
 			union
@@ -155,6 +155,5 @@ namespace gl42
 			/**
 			 * @}
 			 */
-			void PrintLog() const override;
 	};
 }
