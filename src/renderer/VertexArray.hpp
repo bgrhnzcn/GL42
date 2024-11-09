@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:00:41 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/02 00:53:27 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/10 02:27:04 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ namespace gl42
 	class VertexArray
 	{
 		private:
-			unsigned int vbId;
+			unsigned int vertexArrayID;
 		public:
 			VertexArray();
 			~VertexArray();
