@@ -13,7 +13,6 @@ set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 add_subdirectory(lib/glfw)
-add_subdirectory(lib/glm)
 
 #################################STATIC#################################
 
@@ -26,7 +25,6 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glm/glm
 	)
 	
 	target_link_directories(gl42Static
@@ -52,6 +50,7 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Vertex.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/Error.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/debug/Debug.cpp
@@ -73,7 +72,6 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glm/glm
 	)
 	
 	target_link_directories(gl42Shared
@@ -97,6 +95,7 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexArray.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Vertex.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/shader/Shader.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/Error.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/debug/Debug.cpp
