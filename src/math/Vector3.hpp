@@ -6,13 +6,11 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 00:31:56 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:00:21 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include "vec3.hpp"
 
 namespace gl42
 {
@@ -24,31 +22,24 @@ namespace gl42
 	 */
 	class Vector3
 	{
-		private:
-			glm::vec3 data;
 		public:
-			struct
+			union
 			{
-				/// @brief X value of the vector
-				float &x;
-				/// @brief Y value of the vector
-				float &y;
-				/// @brief Z value of the vector
-				float &z;
+				struct
+				{
+					/// @brief X value of the vector
+					float x;
+					/// @brief Y value of the vector
+					float y;
+					/// @brief Z value of the vector
+					float z;
+				};
+				float data[3];
 			};
 			/**
 			 * @name Constructors and Destructor
 			 * @{
 			 */
-		private:
-			/**
-			 * @brief Construct a new Vector3 object from glm::vec3
-			 * 
-			 * @details Initializes the vector with a glm::vec3.
-			 * 
-			 * @param[in] vec from glm::vec3.
-			 */
-			Vector3(const glm::vec3 &vec);
 		public:
 			/**
 			 * @brief Construct a new Vector3 object

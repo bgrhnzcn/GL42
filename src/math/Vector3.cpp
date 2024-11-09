@@ -6,35 +6,27 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:33:30 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 00:33:12 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/09 19:56:52 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Math.hpp"
 #include "Vector3.hpp"
-#include "geometric.hpp"
-#include "exponential.hpp"
 
 gl42::Vector3::Vector3()
-	: data(glm::vec3(0)), x(data.x), y(data.y), z(data.z)
+	: x(0), y(0), z(0)
 {
 	//Do nothing
 }
 
 gl42::Vector3::Vector3(float a)
-	: data(glm::vec3(a)), x(data.x), y(data.y), z(data.z)
+	: x(a), y(a), z(a)
 {
 	//Do nothing
 }
 
 gl42::Vector3::Vector3(float x, float y, float z)
-	: data(glm::vec3(x, y, z)), x(data.x), y(data.y), z(data.z)
-{
-	//Do nothing
-}
-
-gl42::Vector3::Vector3(const glm::vec3 &vec)
-	: data(vec), x(data.x), y(data.y), z(data.z)
+	: x(x), y(y), z(z)
 {
 	//Do nothing
 }
@@ -68,28 +60,30 @@ gl42::Vector3 gl42::Vector3::operator/(const float &scaler)
 
 bool gl42::Vector3::operator==(const Vector3 &vec) const
 {
-	if (glm::abs(this->x - vec.x) > gl42::Math::epsilon)
+	if (std::abs(this->x - vec.x) > gl42::Math::epsilon)
 		return false;
-	if (glm::abs(this->y - vec.y) > gl42::Math::epsilon)
+	if (std::abs(this->y - vec.y) > gl42::Math::epsilon)
 		return false;
-	if (glm::abs(this->z - vec.z) > gl42::Math::epsilon)
+	if (std::abs(this->z - vec.z) > gl42::Math::epsilon)
 		return false;
 	return true;
 }
 
 float gl42::Vector3::dotProdcut(const Vector3 &vec)
 {
-	return glm::dot(this->data, vec.data);
+	return ((this->x * vec.x) + (this->y * vec.y) + (this->z * vec.z));
 }
 
 gl42::Vector3 gl42::Vector3::crossProduct(const Vector3 &vec)
 {
-	return glm::cross(this->data, vec.data);
+	return Vector3((this->y * vec.z) - (this->z * vec.y),
+				   (this->z * vec.x) - (this->x * vec.z),
+				   (this->x * vec.y) - (this->y * vec.x));
 }
 
 float gl42::Vector3::magnitude()
 {
-	return glm::sqrt(this->dotProdcut(*this));
+	return std::sqrt(this->dotProdcut(*this));
 }
 
 gl42::Vector3 gl42::Vector3::normalize()
