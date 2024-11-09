@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 02:36:05 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/10/13 14:32:00 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/10 02:03:00 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,20 @@ gl42::Matrix2x2::Matrix2x2(float a)
 	data[3] = a;
 }
 
-gl42::Matrix2x2::Matrix2x2(const Vector2 &row1, const Vector2 &row2)
+gl42::Matrix2x2::Matrix2x2(const Vector2 &col1, const Vector2 &col2)
 {
-	data[0] = row1.x;
-	data[1] = row1.y;
-	data[2] = row2.x;
-	data[3] = row2.y;
+	data[0] = col1.x;
+	data[1] = col1.y;
+	data[2] = col2.x;
+	data[3] = col2.y;
 }
 
 gl42::Matrix2x2::Matrix2x2(const Matrix2x2 &other)
 {
-	data[0] = other[0];
-	data[1] = other[1];
-	data[2] = other[2];
-	data[3] = other[3];
-}
-
-gl42::Matrix2x2::Matrix2x2(const glm::mat2 &mat)
-{
-	data[0] = mat[0][0];
-	data[1] = mat[1][0];
-	data[2] = mat[0][1];
-	data[3] = mat[1][1];
-}
-
-gl42::Matrix2x2::Matrix2x2(float m00, float m01, float m10, float m11)
-{
-	data[0] = m00;
-	data[1] = m01;
-	data[2] = m10;
-	data[3] = m11;
+	data[0] = other.data[0];
+	data[1] = other.data[1];
+	data[2] = other.data[2];
+	data[3] = other.data[3];
 }
 
 gl42::Matrix2x2::~Matrix2x2()
@@ -67,75 +51,78 @@ gl42::Matrix2x2::~Matrix2x2()
 	//Do Nothing.
 }
 
-gl42::Matrix2x2::operator glm::mat2() const
-{
-	return glm::mat2(data[0], data[2], data[1], data[3]);
-}
-
 void gl42::Matrix2x2::operator=(const Matrix2x2 &other)
 {
-	data[0] = other[0];
-	data[1] = other[1];
-	data[2] = other[2];
-	data[3] = other[3];
+	data[0] = other.data[0];
+	data[1] = other.data[1];
+	data[2] = other.data[2];
+	data[3] = other.data[3];
 }
 
 gl42::Matrix2x2 gl42::Matrix2x2::operator+(const Matrix2x2 &other)
 {
-	return Matrix2x2(this->data[0] + other.data[0], this->data[1] + other.data[1]
-					,this->data[2] + other.data[2], this->data[3] + other.data[3]);
+	return Matrix2x2(
+		Vector2(this->data[0] + other.data[0], this->data[1] + other.data[1]),
+		Vector2(this->data[2] + other.data[2], this->data[3] + other.data[3])
+		);
 }
 
 gl42::Matrix2x2 gl42::Matrix2x2::operator-(const Matrix2x2 &other)
 {
-	return Matrix2x2(this->data[0] - other.data[0], this->data[1] - other.data[1]
-					,this->data[2] - other.data[2], this->data[3] - other.data[3]);
+	return Matrix2x2(
+		Vector2(this->data[0] - other.data[0], this->data[1] - other.data[1]),
+		Vector2(this->data[2] - other.data[2], this->data[3] - other.data[3])
+		);
 }
 
 gl42::Matrix2x2 gl42::Matrix2x2::operator*(const float &scaler)
 {
-	return Matrix2x2(this->data[0] * scaler, this->data[1] * scaler
-					,this->data[2] * scaler, this->data[3] * scaler);
-}
-
-gl42::Vector2 gl42::Matrix2x2::operator*(const Vector2 &vec)
-{
-	return Vector2((glm::mat2)(*this) * (glm::vec2)(vec));
+	return Matrix2x2(
+		Vector2(this->data[0] * scaler, this->data[1] * scaler),
+		Vector2(this->data[2] * scaler, this->data[3] * scaler)
+		);
 }
 
 gl42::Matrix2x2 gl42::Matrix2x2::operator/(const float &scaler)
 {
-	return Matrix2x2(this->data[0] / scaler, this->data[1] / scaler
-					,this->data[2] / scaler, this->data[3] / scaler);
+	return Matrix2x2(
+		Vector2(this->data[0] / scaler, this->data[1] / scaler),
+		Vector2(this->data[2] / scaler, this->data[3] / scaler)
+		);
+}
+
+gl42::Vector2 gl42::Matrix2x2::operator*(const Vector2 &vec)
+{
+	(void)vec;
+	return Vector2();
+}
+
+gl42::Matrix2x2 gl42::Matrix2x2::operator*(const Matrix2x2 &mat)
+{
+	(void)mat;
+	return Matrix2x2();
 }
 
 bool gl42::Matrix2x2::operator==(const Matrix2x2 &vec) const
 {
 	for (int i = 0; i < 4; i++)
-		if (data[i] != vec[i])
+		if (data[i] != vec.data[i])
 			return false;
 	return true;
 }
 
-float gl42::Matrix2x2::operator[](unsigned int index) const
-{
-	if (index > 3)
-		std::cerr << "gl42::Matrix2x2::IndexOutOfRange." << std::endl;
-	return data[index];
-}
-
-float &gl42::Matrix2x2::operator[](unsigned int index)
-{
-	if (index > 3)
-		std::cerr << "gl42::Matrix2x2::IndexOutOfRange." << std::endl;
-	return data[index];
-}
-
-gl42::Vector2 gl42::Matrix2x2::GetRow(unsigned char index)
+const gl42::Vector2 &gl42::Matrix2x2::operator[](unsigned int index) const
 {
 	if (index > 1)
 		std::cerr << "gl42::Matrix2x2::IndexOutOfRange." << std::endl;
-	return Vector2(data[index * 2], data[(index * 2) + 1]);
+	return *(reinterpret_cast<const gl42::Vector2 *>(&this->data[index * 2]));
+}
+
+gl42::Vector2 &gl42::Matrix2x2::operator[](unsigned int index)
+{
+	if (index > 3)
+		std::cerr << "gl42::Matrix2x2::IndexOutOfRange." << std::endl;
+	return *(reinterpret_cast<gl42::Vector2 *>(&this->data[index * 2]));
 }
 
 gl42::Vector2 gl42::Matrix2x2::GetColumn(unsigned char index)
@@ -145,7 +132,9 @@ gl42::Vector2 gl42::Matrix2x2::GetColumn(unsigned char index)
 	return Vector2(data[index], data[index + 2]);
 }
 
-gl42::Matrix2x2 gl42::Matrix2x2::operator*(const Matrix2x2 &mat)
+gl42::Vector2 gl42::Matrix2x2::GetRow(unsigned char index)
 {
-	return Matrix2x2((glm::mat2)(*this) * (glm::mat2)(mat));
+	if (index > 1)
+		std::cerr << "gl42::Matrix2x2::IndexOutOfRange." << std::endl;
+	return Vector2(data[index * 2], data[(index * 2) + 1]);
 }
