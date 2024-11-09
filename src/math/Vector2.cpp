@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:33:30 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/07 15:25:24 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/09 21:00:55 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include "Math.hpp"
 #include "Vector2.hpp"
-#include "geometric.hpp"
-#include "exponential.hpp"
 
 gl42::Vector2::Vector2()
 	: x(0), y(0)
@@ -31,12 +29,6 @@ gl42::Vector2::Vector2(float a)
 
 gl42::Vector2::Vector2(float x, float y)
 	: x(x), y(y)
-{
-	//Do nothing
-}
-
-gl42::Vector2::Vector2(const glm::vec2 &vec)
-	: x(vec.x), y(vec.y)
 {
 	//Do nothing
 }
@@ -70,26 +62,21 @@ gl42::Vector2 gl42::Vector2::operator/(const float &scaler) const
 
 bool gl42::Vector2::operator==(const Vector2 &vec) const
 {
-	if (glm::abs(this->x - vec.x) > gl42::Math::epsilon)
+	if (std::abs(this->x - vec.x) > gl42::Math::epsilon)
 		return false;
-	if (glm::abs(this->y - vec.y) > gl42::Math::epsilon)
+	if (std::abs(this->y - vec.y) > gl42::Math::epsilon)
 		return false;
 	return (true);
 }
 
-gl42::Vector2::operator glm::vec2() const
-{
-	return glm::vec2(x, y);
-}
-
 float gl42::Vector2::dotProduct(const Vector2 &vec) const
 {
-	return glm::dot((glm::vec2)(*this), (glm::vec2)vec);
+	return (this->x * vec.x) + (this->y * vec.y);
 }
 
 float gl42::Vector2::magnitude() const
 {
-	return glm::sqrt(this->dotProduct(*this));
+	return std::sqrt(this->dotProduct(*this));
 }
 
 gl42::Vector2 gl42::Vector2::normalize() const

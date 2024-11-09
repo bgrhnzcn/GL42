@@ -6,14 +6,11 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:12:35 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/07 15:25:07 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/09 21:00:59 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include "vec2.hpp"
-#include "ILogable.hpp"
 
 namespace gl42
 {
@@ -37,19 +34,11 @@ namespace gl42
 				};
 				float data[2];
 			};
+		public:
 			/**
 			 * @name Constructors and Destructor
 			 * @{
 			 */
-		public:
-			/**
-			 * @brief Construct a new Vector2 object from glm::vec2
-			 * 
-			 * @details Initializes the vector with a glm::vec2.
-			 * 
-			 * @param[in] vec from glm::vec2.
-			 */
-			Vector2(const ::glm::vec2 &vec);
 			/**
 			 * @brief Construct a new Vector2 object
 			 * 
@@ -87,7 +76,6 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
-			operator ::glm::vec2() const;
 			/**
 			 * @brief Addition operator.
 			 * 
