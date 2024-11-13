@@ -24,6 +24,7 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/assets
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 	)
 	
@@ -59,6 +60,7 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector4.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Matrix2x2.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/assets/AssetLoader.cpp
 	)
 	
 	#################################SHARED#################################
@@ -71,6 +73,7 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/shader
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/assets
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
 	)
 	
@@ -104,6 +107,7 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector3.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Vector4.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/math/Matrix2x2.cpp
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/assets/AssetLoader.cpp
 )
 
 #################################OUTPUT#################################
