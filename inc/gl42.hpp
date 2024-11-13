@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:46:26 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/10 02:23:49 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:55:45 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,4 @@
 #include "VertexArray.hpp"
 #include "Math.hpp"
 #include "Debug.hpp"
+#include "AssetLoader.hpp"
