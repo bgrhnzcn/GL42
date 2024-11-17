@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:54:04 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/14 02:16:54 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/18 01:13:05 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void gl42::ObjAsset::getData(const std::string &filePath,
 			while (str >> faceEntry)
 			{
 				std::stringstream vertexStr(faceEntry);
-				if (faceEntry.find("//"))
+				if (faceEntry.find("//") != std::size_t(-1))
 				{
 					std::string val;
 					if (std::getline(vertexStr, val, '/'))
