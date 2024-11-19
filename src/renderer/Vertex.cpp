@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vertex.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 02:15:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/13 21:54:28 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:20:18 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ gl42::Vertex::Vertex(Vector3 position, Vector3 normal, Vector2 texture, Vector4 
 
 void gl42::Vertex::print()
 {
-	std::cout << "Position: {"
+	std::cout << "\tPosition: \t{"
 			  << position.x << ", "
 			  << position.y << ", "
 			  << position.z << "}" << std::endl;
-	std::cout << "Textures: {"
+	std::cout << "\tTextures: \t{"
 			  << texture.x << ", "
 			  << texture.y << "}" << std::endl;
-	std::cout << "Normal: {"
+	std::cout << "\tNormal: \t{"
 			  << normal.x << ", "
 			  << normal.y << ", "
 			  << normal.z << "}" << std::endl;

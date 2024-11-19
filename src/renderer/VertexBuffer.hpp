@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   VertexBuffer.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 00:04:20 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/10 02:44:27 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:31:01 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <vector>
-
-#include "Vertex.hpp"
+#include "AssetLoader.hpp"
 
 namespace gl42
 {
@@ -23,7 +21,7 @@ namespace gl42
 		private:
 			unsigned int m_vertexBufferID;
 		public:
-			VertexBuffer(std::vector<Vertex> &vertices);
+			VertexBuffer(gl42::ObjAsset &asset);
 			~VertexBuffer();
 		public:
 			void bind();

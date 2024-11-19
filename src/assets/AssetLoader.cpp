@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AssetLoader.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:54:04 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/18 01:13:05 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:22:12 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,27 @@ gl42::ObjAsset::ObjAsset(const std::string &filePath)
 		}
 	}
 
+	vertices.reserve(faces.size() * 3);
 	Vertex temp;
-	for (size_t i = 0; i < positions.size(); i++)
+	for (size_t i = 0; i < faces.size(); i++)
 	{
-		temp.position = positions[i];
+		for (std::size_t j = 0; j < 3; j++)
+		{
+			temp.position = positions[faces[i].positionIndices[j] - 1];
+			temp.normal = normals[faces[i].normalIndices[j] - 1];
+			temp.texture = textures[faces[i].textureIndices[j] - 1];
+			vertices.push_back(temp);
+		}
 	}
 }
 
 void gl42::ObjAsset::printAsset()
 {
 	for (Vertex vertex : vertices)
+	{
+		std::cout << "Vertex:\n";
 		vertex.print();
+	}
 	for (Face face : faces)
 		face.print();
 }

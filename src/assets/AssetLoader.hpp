@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   AssetLoader.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:30:14 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/11/14 02:22:50 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:34:58 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <string>
 #include <vector>
@@ -23,8 +25,9 @@ namespace gl42
 			ObjAsset(const std::string &filePath);
 		public:
 			void printAsset();
-		private:
+		public:
 			std::vector<Vertex> vertices;
+		private:
 			std::vector<Face> faces;
 		private:
 			void getData(const std::string &filePath,
@@ -32,6 +35,5 @@ namespace gl42
 				std::vector<Vector3> &normals,
 				std::vector<Vector2> &textures,
 				std::vector<Face> &faces);
-			void createVBO();
 	};
 } // namespace gl42
