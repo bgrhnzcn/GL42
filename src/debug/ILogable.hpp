@@ -17,6 +17,8 @@ namespace gl42
 	class ILogable
 	{
 		public:
+			virtual ~ILogable() = 0;
+		public:
 			virtual void PrintLog() const = 0;
 	};
 }

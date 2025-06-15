@@ -46,6 +46,28 @@ namespace gl42
 			 */
 			Vector2();
 			/**
+			 * @brief Copy constructor.
+			 *
+			 * @details Initializes the Vector2 with another Vector2.
+			 *
+			 * @param vec Vector2 to copy.
+			 */
+			Vector2(const Vector2& other) = default;
+			/**
+			 * @brief Move constructor.
+			 *
+			 * @details Initializes the Vector2 with another Vector2.
+			 *
+			 * @param vec Vector2 to move.
+			 */
+			Vector2(Vector2&& other) = default;
+			/**
+			 * @brief Destroy the Vector2 object
+			 *
+			 * @details Default destructor.
+			 */
+			~Vector2() = default;
+			/**
 			 * @brief Construct a new Vector2 object
 			 * 
 			 * @details Initializes the vector with a single value.
@@ -63,12 +85,6 @@ namespace gl42
 			 */
 			Vector2(float x, float y);
 			/**
-			 * @brief Destroy the Vector2 object
-			 * 
-			 * @details Default destructor.
-			 */
-			~Vector2();
-			/**
 			 * @}
 			 */
 		public:
@@ -76,6 +92,14 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
+			/**
+			 * @brief Assignment operator.
+			 *
+			 * @details Assigns the values of another Vector2 to this Vector2.
+			 * @param other Vector2 to assign.
+			 * @return Reference to this Vector2.
+			 */
+			Vector2& operator=(const Vector2& other);
 			/**
 			 * @brief Addition operator.
 			 * 
@@ -96,7 +120,7 @@ namespace gl42
 			 * Multiplies a vector with a scalar. Doesn't modify the original vector.
 			 * @return Return a new result Vector2.
 			 */
-			Vector2 operator*(const float &scaler) const;
+			Vector2 operator*(float scaler) const;
 			/**
 			 * @brief Division operator.
 			 * 
@@ -104,14 +128,14 @@ namespace gl42
 			 * Returns zero vector for zero division case.
 			 * @return Return a new result Vector2.
 			 */
-			Vector2 operator/(const float &scaler) const;
+			Vector2 operator/(float scaler) const;
 			/**
 			 * @brief Equal operator.
 			 * 
 			 * @return \b true if values inside vectors are same, false otherwise.
 			 * Same means difference of each value smaller than \b EPSILON.
 			 */
-			bool operator==(const Vector2 &vec) const;
+			bool operator==(const Vector2& vec) const;
 		public:
 			/**
 			 * @brief Dot product of two vector.
@@ -119,9 +143,9 @@ namespace gl42
 			 * Dot product is a commutative operation. (Order doesn't affect the result.)
 			 * @return Return a scaler result.
 			 */
-			float dotProduct(const Vector2 &vec) const;
+			float dotProduct(const Vector2& vec) const;
 			/**
-			 * @brief Magnitude (Size or length) of this vector.
+			 * @brief Magnitude (Length) of this vector.
 			 * 
 			 * Can't return value smaller than zero.
 			 * @return Return a magnitude of this vector.

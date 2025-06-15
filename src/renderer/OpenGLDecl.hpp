@@ -29,6 +29,7 @@
 #endif
 
 #ifdef _WIN32
+#	include <windows.h>
 #	include <glew.h>
 #	include <gl/GL.h>
 #	include <gl/GLU.h>

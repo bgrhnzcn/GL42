@@ -50,6 +50,28 @@ namespace gl42
 			 */
 			Vector4();
 			/**
+			 * @brief Copy constructor
+			 *
+			 * @details Initializes the vector with another vector.
+			 *
+			 * @param vec Vector to copy.
+			 */
+			Vector4(const Vector4& vec) = default;
+			/**
+			 * @brief Move constructor
+			 *
+			 * @details Initializes the vector with another vector.
+			 *
+			 * @param vec Vector to move.
+			 */
+			Vector4(Vector4&& vec) = default;
+			/**
+			 * @brief Destroy the Vector4 object
+			 *
+			 * @details Default destructor.
+			 */
+			~Vector4() = default;
+			/**
 			 * @brief Construct a new Vector4 object
 			 * 
 			 * @details Initializes the vector with a single value.
@@ -68,12 +90,7 @@ namespace gl42
 			 * @param[in] w W value of the vector.
 			 */
 			Vector4(float x, float y, float z, float w);
-			/**
-			 * @brief Destroy the Vector4 object
-			 *
-			 * @details Default destructor.
-			 */
-			~Vector4();
+
 			/**
 			 * @}
 			 */
@@ -82,6 +99,14 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
+			/**
+			 * @brief Assignment operator.
+			 *
+			 * @details Assigns the values of another Vector3 to this Vector3.
+			 * @param other Vector3 to assign.
+			 * @return Reference to this Vector3.
+			 */
+			Vector4& operator=(const Vector4& other);
 			/**
 			 * @brief Addition operator.
 			 * 
@@ -102,7 +127,7 @@ namespace gl42
 			 * Multiplies a vector with a scalar. Doesn't modify the original vector.
 			 * @return Return a new result Vector4.
 			 */
-			Vector4 operator*(const float &scaler);
+			Vector4 operator*(float scaler);
 			/**
 			 * @brief Division operator.
 			 * 
@@ -110,7 +135,7 @@ namespace gl42
 			 * Returns zero vector for zero division case.
 			 * @return Return a new result Vector4.
 			 */
-			Vector4 operator/(const float &scaler);
+			Vector4 operator/(float scaler);
 			/**
 			 * @brief Equal operator.
 			 * 

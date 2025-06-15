@@ -27,11 +27,11 @@ namespace gl42
 			{
 				struct
 				{
-					/// @brief X value of the vector
+					/// @brief X value of the vector.
 					float x;
-					/// @brief Y value of the vector
+					/// @brief Y value of the vector.
 					float y;
-					/// @brief Z value of the vector
+					/// @brief Z value of the vector.
 					float z;
 				};
 				float data[3];
@@ -42,13 +42,35 @@ namespace gl42
 			 */
 		public:
 			/**
-			 * @brief Construct a new Vector3 object
+			 * @brief Default constructor.
 			 * 
-			 * @details Default constructor. Initializes the vector with 0.
+			 * @details Construct a new Vector3 object. Initializes the vector with 0.
 			 */
 			Vector3();
 			/**
-			 * @brief Construct a new Vector3 object
+			 * @brief Copy constructor.
+			 *
+			 * @details Initializes the Vector3 with another Vector3.
+			 *
+			 * @param vec Vector3 to copy.
+			 */
+			Vector3(const Vector3& vec) = default;
+			/**
+			 * @brief Move constructor.
+			 *
+			 * @details Initializes the Vector3 with another Vector3.
+			 *
+			 * @param vec Vector3 to move.
+			 */
+			Vector3(Vector3&& vec) = default;
+			/**
+			 * @brief Default destructor.
+			 *
+			 * @details Destroy the Vector3 object.
+			 */
+			~Vector3() = default;
+			/**
+			 * @brief Construct a new Vector3 object.
 			 * 
 			 * @details Initializes the vector with a single value.
 			 * 
@@ -56,7 +78,7 @@ namespace gl42
 			 */
 			Vector3(float a);
 			/**
-			 * @brief Construct a new Vector3 object
+			 * @brief Construct a new Vector3 object.
 			 * 
 			 * @details Initializes the vector with two values.
 			 * 
@@ -66,12 +88,6 @@ namespace gl42
 			 */
 			Vector3(float x, float y, float z);
 			/**
-			 * @brief Destroy the Vector3 object
-			 * 
-			 * @details Default destructor.
-			 */
-			~Vector3();
-			/**
 			 * @}
 			 */
 		public:
@@ -79,6 +95,14 @@ namespace gl42
 			 * @name Operators
 			 * @{
 			 */
+			/**
+			 * @brief Assignment operator.
+			 *
+			 * @details Assigns the values of another Vector3 to this Vector3.
+			 * @param other Vector3 to assign.
+			 * @return Reference to this Vector3.
+			 */
+			Vector3& operator=(const Vector3& other);
 			/**
 			 * @brief Addition operator.
 			 * 
@@ -99,7 +123,7 @@ namespace gl42
 			 * Multiplies a vector with a scalar. Doesn't modify the original vector.
 			 * @return Return a new result Vector3.
 			 */
-			Vector3 operator*(const float &scaler);
+			Vector3 operator*(float scaler);
 			/**
 			 * @brief Division operator.
 			 * 
@@ -107,7 +131,7 @@ namespace gl42
 			 * Returns zero vector for zero division case.
 			 * @return Return a new result Vector3.
 			 */
-			Vector3 operator/(const float &scaler);
+			Vector3 operator/(float scaler);
 			/**
 			 * @brief Equal operator.
 			 * 
@@ -123,10 +147,10 @@ namespace gl42
 			 */
 			float dotProdcut(const Vector3 &vec);
 			/**
-			 * @brief 
-			 * 
-			 * @param vec 
-			 * @return Vector3 
+			 * @brief Cross product of two vector.
+			 *
+			 * Cross product is not a commutative operation. (Order affects the result.)
+			 * @return Return a new Vector3 result.
 			 */
 			Vector3 crossProduct(const Vector3 &vec);
 			/**

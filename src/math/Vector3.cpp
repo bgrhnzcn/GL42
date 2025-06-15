@@ -31,9 +31,9 @@ gl42::Vector3::Vector3(float x, float y, float z)
 	//Do nothing
 }
 
-gl42::Vector3::~Vector3()
+gl42::Vector3& gl42::Vector3::operator=(const Vector3& other)
 {
-	//Do nothing
+	return *this = Vector3(other.x, other.y, other.z);
 }
 
 gl42::Vector3 gl42::Vector3::operator+(const Vector3 &vec)
@@ -46,12 +46,12 @@ gl42::Vector3 gl42::Vector3::operator-(const Vector3 &vec)
 	return Vector3(this->x - vec.x, this->y - vec.y, this->z - vec.z);
 }
 
-gl42::Vector3 gl42::Vector3::operator*(const float &scaler)
+gl42::Vector3 gl42::Vector3::operator*(float scaler)
 {
 	return Vector3(this->x * scaler, this->y * scaler, this->z * scaler);
 }
 
-gl42::Vector3 gl42::Vector3::operator/(const float &scaler)
+gl42::Vector3 gl42::Vector3::operator/(float scaler)
 {
 	if (scaler == 0)
 		return Vector3();
@@ -60,11 +60,11 @@ gl42::Vector3 gl42::Vector3::operator/(const float &scaler)
 
 bool gl42::Vector3::operator==(const Vector3 &vec) const
 {
-	if (std::abs(this->x - vec.x) > gl42::Math::epsilon)
+	if (gl42::Math::abs(this->x - vec.x) > gl42::Math::epsilon)
 		return false;
-	if (std::abs(this->y - vec.y) > gl42::Math::epsilon)
+	if (gl42::Math::abs(this->y - vec.y) > gl42::Math::epsilon)
 		return false;
-	if (std::abs(this->z - vec.z) > gl42::Math::epsilon)
+	if (gl42::Math::abs(this->z - vec.z) > gl42::Math::epsilon)
 		return false;
 	return true;
 }
@@ -83,12 +83,12 @@ gl42::Vector3 gl42::Vector3::crossProduct(const Vector3 &vec)
 
 float gl42::Vector3::magnitude()
 {
-	return std::sqrt(this->dotProdcut(*this));
+	return gl42::Math::sqrt(dotProdcut(*this));
 }
 
 gl42::Vector3 gl42::Vector3::normalize()
 {
-	return (*this) / this->magnitude();
+	return (*this) / magnitude();
 }
 
 float gl42::Vector3::distance(const Vector3 &vec)

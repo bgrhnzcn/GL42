@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cmath>
+#pragma once
 
+#include <cmath>
 #include "Vector2.hpp"
 
 namespace gl42
@@ -28,21 +29,140 @@ namespace gl42
 			constexpr static const float pi = 3.14159265359f;
 			constexpr static const float e = 2.71828182846f;
 		public:
+			
 			/**
-			 * @brief 
-			 * 
-			 * @param val Value to normalize. For correct normalization use value between min and max.
-			 * @param min 
-			 * @param max 
-			 * @return float 
+			 * @brief Normalizes a value within a given range.
+			 *
+			 * @param val The value to normalize.
+			 * @param min The minimum of the range.
+			 * @param max The maximum of the range.
+			 * @return Normalized value in the range [0, 1].
 			 */
-			static float normalize(float val, float min, float max);
-			static float lerp(float val, float min, float max);
-			static float map(float val, Vector2 in, Vector2 out);
-			static float map(float val, float inMin, float inMax, float outMin, float outMax);
-			static float toDegree(float rad);
-			static float toRadian(float degree);
-			static float sin(float rad);
-			static float cos(float rad);
+			static inline float normalize(float val, float min, float max)
+			{
+				if (min == max)
+				{
+					if (val < min)
+						return 0.0f;
+					else
+						return 1.0f;
+				}
+				if (min > max)
+				{
+					float temp = max;
+					max = min;
+					min = temp;
+				}
+				return (val - min) / (max - min);
+			}
+
+			/**
+			 * @brief Linearly interpolates between min and max by val.
+			 *
+			 * @param val Interpolation factor, typically in [0, 1].
+			 * @param min Start value.
+			 * @param max End value.
+			 * @return Interpolated value.
+			 */
+			static inline float lerp(float val, float min, float max)
+			{
+				return (val * (max - min)) + min;
+			}
+
+			/**
+			 * @brief Maps a value from one range to another using Vector2.
+			 *
+			 * @param val The value to map.
+			 * @param in Input range as Vector2 (x: min, y: max).
+			 * @param out Output range as Vector2 (x: min, y: max).
+			 * @return Mapped value in the output range.
+			 */
+			static inline float map(float val, Vector2 in, Vector2 out)
+			{
+				return lerp(normalize(val, in.x, in.y), out.x, out.y);
+			}
+
+			/**
+			 * @brief Maps a value from one range to another.
+			 *
+			 * @param val The value to map.
+			 * @param inMin Input range minimum.
+			 * @param inMax Input range maximum.
+			 * @param outMin Output range minimum.
+			 * @param outMax Output range maximum.
+			 * @return Mapped value in the output range.
+			 */
+			static inline float map(float val, float inMin, float inMax, float outMin, float outMax)
+			{
+				return lerp(normalize(val, inMin, inMax), outMin, outMax);
+			}
+
+			/**
+			 * @brief Converts radians to degrees.
+			 *
+			 * @param rad Angle in radians.
+			 * @return Angle in degrees.
+			 */
+			static inline float toDegree(float rad)
+			{
+				return rad * (180 / pi);
+			}
+
+			/**
+			 * @brief Converts degrees to radians.
+			 *
+			 * @param degree Angle in degrees.
+			 * @return Angle in radians.
+			 */
+			static inline float toRadian(float degree)
+			{
+				return (degree / 180) * pi;
+			}
+
+			/**
+			 * @brief Calculates the sine of an angle in radians.
+			 *
+			 * @param rad Angle in radians.
+			 * @return Sine of the angle.
+			 */
+			static inline float sin(float rad)
+			{
+				// For now. I will write SIMD Instructed version.
+				return ::sin(rad);
+			}
+
+			/**
+			 * @brief Calculates the cosine of an angle in radians.
+			 *
+			 * @param rad Angle in radians.
+			 * @return Cosine of the angle.
+			 */
+			static inline float cos(float rad)
+			{
+				// For now. I will write SIMD Instructed version.
+				return ::cos(rad);
+			}
+
+			/**
+			 * @brief Returns the absolute value of a float.
+			 *
+			 * @param val Input value.
+			 * @return Absolute value.
+			 */
+			static inline float abs(float val)
+			{
+				return ::abs(val);
+			}
+
+			/**
+			 * @brief Calculates the square root of a value.
+			 *
+			 * @param val Input value.
+			 * @return Square root of the value.
+			 */
+			static inline float sqrt(float val)
+			{
+				return ::sqrt(val);
+			}
 	};
 }

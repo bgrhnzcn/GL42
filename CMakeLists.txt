@@ -76,25 +76,30 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug/lib/glew/bin
 	)
-	
-	target_link_libraries(gl42Static
-	PUBLIC libglew_static
-	PUBLIC glfw
-	PUBLIC GL
-	)
 
 	if (WIN32)
+		target_link_libraries(gl42Static
+			PUBLIC libglew_static
+			PUBLIC glfw
+			PUBLIC opengl32
+		)
 		target_compile_options(gl42Static
-		PRIVATE -Wall
+			PRIVATE -Wall
 		)
 	else()
+		target_link_libraries(gl42Static
+			PUBLIC m	
+			PUBLIC libglew_static
+			PUBLIC glfw
+			PUBLIC GL
+		)
 		target_compile_options(gl42Static
-		PRIVATE -std=c++20
-		PRIVATE -Wall
-		PRIVATE -Wextra
-		PRIVATE -Werror
-		PRIVATE -O2
-		PRIVATE -g
+			PRIVATE -std=c++20
+			PRIVATE -Wall
+			PRIVATE -Wextra
+			PRIVATE -Werror
+			PRIVATE -O2
+			PRIVATE -g
 		)
 	endif ()
 	
@@ -133,24 +138,30 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug/lib/glew/bin
 	)
-	
-	target_link_libraries(gl42Shared
-	PUBLIC libglew_static
-	PUBLIC glfw
-	PUBLIC GL
-	)
 
 	if (WIN32)
+		target_link_libraries(gl42Shared
+			PUBLIC libglew_static
+			PUBLIC glfw
+			PUBLIC opengl32
+		)
 		target_compile_options(gl42Shared
-		PRIVATE -Wall
+			PRIVATE -Wall
 		)
 	else()
+		target_link_libraries(gl42Shared
+			PUBLIC m
+			PUBLIC libglew_static
+			PUBLIC glfw
+			PUBLIC GL
+		)
 		target_compile_options(gl42Shared
-		PRIVATE -std=c++20
-		PRIVATE -Wall
-		PRIVATE -Wextra
-		PRIVATE -Werror
-		PRIVATE -g
+			PRIVATE -std=c++20
+			PRIVATE -Wall
+			PRIVATE -Wextra
+			PRIVATE -Werror
+			PRIVATE -O2
+			PRIVATE -g
 		)
 	endif()
 
@@ -173,14 +184,18 @@ target_include_directories(gl42Static
 #################################OUTPUT#################################
 
 if (WIN32)
+	
 	set_target_properties(gl42Static PROPERTIES
 		ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
 	)
 
+	# DLL's are runtime in Windows.
 	set_target_properties(gl42Shared PROPERTIES
-		LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
 	)
+
 else()
+
 	set_target_properties(gl42Static PROPERTIES
 		ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
 		OUTPUT_NAME gl42
@@ -190,4 +205,5 @@ else()
 		LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
 		OUTPUT_NAME gl42
 	)
+
 endif()
