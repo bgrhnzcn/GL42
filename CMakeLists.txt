@@ -12,9 +12,52 @@ set(OpenGL_GL_PREFERENCE GLVND)
 
 find_package(OpenGL REQUIRED)
 
-add_subdirectory(lib/glfw)
+# Check GLFW library.
 
-#################################STATIC#################################
+set(LIB_GLFW_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw")
+
+if (EXISTS "${LIB_GLFW_PATH}/CMakeLists.txt")
+	message("GLFW Already Cloned.")
+	add_subdirectory(${LIB_GLFW_PATH})
+else ()
+	message("Fetching GLFW...")
+	include(FetchContent)
+
+	FetchContent_Declare(
+		glfw
+		GIT_REPOSITORY https://github.com/glfw/glfw
+		GIT_TAG master
+		SOURCE_DIR "${LIB_GLFW_PATH}"
+	)
+
+	FetchContent_Populate(glfw)
+	add_subdirectory(${LIB_GLFW_PATH})
+endif ()
+
+# Check GLEW library.
+
+set(LIB_GLEW_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/glew")
+
+if (EXISTS "${LIB_GLEW_PATH}/CMakeLists.txt")
+	message("GLEW Already Cloned.")
+	add_subdirectory(${LIB_GLEW_PATH})
+else ()
+	message("${LIB_GLEW_PATH}")
+	message("Fetching GLEW...")
+	include(FetchContent)
+
+	FetchContent_Declare(
+		glew
+		GIT_REPOSITORY https://github.com/Perlmint/glew-cmake
+		GIT_TAG master
+		SOURCE_DIR "${LIB_GLEW_PATH}"
+	)
+
+	FetchContent_Populate(glew)
+	add_subdirectory(${LIB_GLEW_PATH})
+endif ()
+
+################################# STATIC #################################
 
 add_library(gl42Static STATIC)
 
@@ -26,26 +69,34 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/assets
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew/include/GL
 	)
 	
 	target_link_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug/lib/glew/bin
 	)
 	
 	target_link_libraries(gl42Static
+	PUBLIC libglew_static
 	PUBLIC glfw
 	PUBLIC GL
 	)
-	
-	target_compile_options(gl42Static
-	PRIVATE -std=c++20
-	PRIVATE -Wall
-	PRIVATE -Wextra
-	PRIVATE -Werror
-	PRIVATE -O2
-	PRIVATE -g
-	)
+
+	if (WIN32)
+		target_compile_options(gl42Static
+		PRIVATE -Wall
+		)
+	else()
+		target_compile_options(gl42Static
+		PRIVATE -std=c++20
+		PRIVATE -Wall
+		PRIVATE -Wextra
+		PRIVATE -Werror
+		PRIVATE -O2
+		PRIVATE -g
+		)
+	endif ()
 	
 	target_sources(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
@@ -63,7 +114,7 @@ target_include_directories(gl42Static
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/assets/AssetLoader.cpp
 	)
 	
-	#################################SHARED#################################
+	################################# SHARED #################################
 	
 	add_library(gl42Shared SHARED)
 	
@@ -75,25 +126,34 @@ target_include_directories(gl42Static
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/math
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/assets
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw/include
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew/include/GL
 	)
 	
 	target_link_directories(gl42Shared
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glfw
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug/lib/glew/bin
 	)
 	
 	target_link_libraries(gl42Shared
+	PUBLIC libglew_static
 	PUBLIC glfw
+	PUBLIC GL
 	)
-	
-	target_compile_options(gl42Shared
-	PRIVATE -std=c++20
-	PRIVATE -Wall
-	PRIVATE -Wextra
-	PRIVATE -Werror
-	PRIVATE -g
-	)
-	
+
+	if (WIN32)
+		target_compile_options(gl42Shared
+		PRIVATE -Wall
+		)
+	else()
+		target_compile_options(gl42Shared
+		PRIVATE -std=c++20
+		PRIVATE -Wall
+		PRIVATE -Wextra
+		PRIVATE -Werror
+		PRIVATE -g
+		)
+	endif()
+
 	target_sources(gl42Shared
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/Window.cpp
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer/VertexBuffer.cpp

@@ -14,15 +14,24 @@
 
 #define GL_SILENCE_DEPRECATION
 #define GL_GLEXT_PROTOTYPES
+#define GLEW_BUILD
 
 #ifdef __APPLE__
+#	include <glew.h>
 #	include <OpenGL/gl3.h>
 #	include <OpenGL/glu.h>
-#	include <GLFW/glfw3.h>
 #endif
 
 #ifdef __linux__
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GLFW/glfw3.h>
+#	include <glew.h>
+#	include <GL/gl.h>
+#	include <GL/glu.h>
 #endif
+
+#ifdef _WIN32
+#	include <glew.h>
+#	include <gl/GL.h>
+#	include <gl/GLU.h>
+
+#endif
+

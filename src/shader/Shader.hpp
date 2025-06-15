@@ -29,11 +29,11 @@ namespace gl42
 	{
 		private:
 			/// @brief Shader ID from OpenGL.
-			unsigned int shaderId;
+			unsigned int m_shaderId;
 			/// @brief Source path used to generate shader.
-			std::string sourcePath;
+			std::string m_sourcePath;
 			/// @brief Source code of the shader.
-			std::string sourceCode;
+			std::string m_sourceCode;
 		public:
 			/**
 			 * @name Constructors and Destructors
@@ -62,7 +62,7 @@ namespace gl42
 			 * @brief Read the source code from the file.
 			 * @param[in] sourcePath Path to the shader file.
 			 */
-			void readSource(const std::string& sourcePath);
+			void readSource();
 			/**
 			 * @brief 
 			 * 

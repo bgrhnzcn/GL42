@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "OpenGLDecl.hpp"
+
 #include "Error.hpp"
 
 void gl42::ClearErr()

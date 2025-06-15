@@ -15,6 +15,7 @@
 #include "OpenGLDecl.hpp"
 
 #include <string>
+#include <GLFW/glfw3.h>
 
 namespace gl42
 {

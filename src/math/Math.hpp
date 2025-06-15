@@ -24,9 +24,9 @@ namespace gl42
 	{
 		public:
 			/// @brief Very small number to assume equality.
-			constexpr static const float epsilon = 1e-5;
-			constexpr static const float pi = M_PI;
-			constexpr static const float e = M_E;
+			constexpr static const float epsilon = 1e-4f;
+			constexpr static const float pi = 3.14159265359f;
+			constexpr static const float e = 2.71828182846f;
 		public:
 			/**
 			 * @brief 

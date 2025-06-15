@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define GL_GLEXT_PROTOTYPES
-
-#include <GL/gl.h>
-
+#include "OpenGLDecl.hpp"
 #include "Error.hpp"
 #include "VertexArray.hpp"
 

@@ -12,7 +12,6 @@
 
 #pragma once
 
-#include <GL/gl.h>
 #include <iostream>
 
 namespace gl42
