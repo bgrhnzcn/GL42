@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 #ifndef SHADER_HPP
 #define SHADER_HPP
 
 #include <string>
+#include <vector>
 
 namespace gl42
 {
@@ -30,10 +30,14 @@ namespace gl42
 		private:
 			/// @brief Shader ID from OpenGL.
 			unsigned int m_shaderId;
-			/// @brief Source path used to generate shader.
-			std::string m_sourcePath;
-			/// @brief Source code of the shader.
-			std::string m_sourceCode;
+			/// @brief Source path used to generate vertex shader.
+			std::string m_vertexPath;
+			/// @brief Source path used to generate fragment shader.
+			std::string m_fragmentPath;
+			/// @brief Source code of the vertex shader.
+			std::vector<GLchar*> m_vertexSourceCode;
+			/// @brief Source code of the fragment shader.
+			std::vector<GLchar*> m_fragmentSourceCode;
 		public:
 			/**
 			 * @name Constructors and Destructors
@@ -41,12 +45,13 @@ namespace gl42
 			 */
 			/**
 			 * @brief Construct a new Shader object.
-			 * 
-			 * Accepts a shader path to single file shader.
-			 * You must provide a path to a file that contains both vertex and fragment shader.
-			 * @param[in] sourcePath Path to the shader file.
+			 * @param[in] vertexPath Path to the vertex shader file.
+			 * @param[in] fragmentPath Path to the fragment shader file.
+			 *
+			 * Reads the source code from the files, compiles the shaders,
+			 * attaches them to a program, links and validates the program.
 			 */
-			Shader(const std::string& sourcePath);
+			Shader(const std::string& vertexPath, const std::string& fragmentPath);
 			
 			/**
 			 * @brief Destroy the Shader object.
@@ -63,17 +68,18 @@ namespace gl42
 			 * @param[in] sourcePath Path to the shader file.
 			 */
 			void readSource();
+			
 			/**
-			 * @brief 
-			 * 
-			 * @param[in] type \b GL_VERTEX_SHADER or \b GL_FRAGMENT_SHADER.
-			 * @return Returns the ID of the compiled shader.
-			 * 
-			 * This ID not the same as class field shaderId.
-			 * See detailed description of the class for better information.
+			 * @brief Compile the fragment shader.
+			 * @return unsigned int Shader ID from OpenGL.
 			 */
-			unsigned int compileShader(unsigned int type);
-			//void combineShader();
+			unsigned int compileFragmentShader();
+
+			/**
+			 * @brief Compile the vertex shader.
+			 * @return unsigned int Shader ID from OpenGL.
+			 */
+			unsigned int compileVertexShader();
 		public:
 			/**
 			 * @brief Use the shader program.
