@@ -1,0 +1,5 @@
+[06/16/2025 15:56:31][INFO	][glad   	]: reproducible build, using packaged specification: 'gl.xml'
+[06/16/2025 15:56:31][INFO	][glad.files	]: opening 'gl.xml' from packaged resource
+[06/16/2025 15:56:31][INFO	][glad   	]: generating 'gl' bindings: {'gl': Version(major=4, minor=0)}
+[06/16/2025 15:56:31][INFO	][glad.files	]: opening 'khrplatform.h' from packaged resource
+[06/16/2025 15:56:31][INFO	][glad   	]: generating 'gl' bindings - done
