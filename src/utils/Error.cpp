@@ -49,12 +49,6 @@ static std::string GetGLErrorMessage(unsigned int errorVal)
 	case GL_INVALID_FRAMEBUFFER_OPERATION:
 		errorMessage = "GL_INVALID_FRAMEBUFFER_OPERATION";
 		break;
-	case GL_CONTEXT_LOST:
-		errorMessage = "GL_CONTEXT_LOST";
-		break;
-	case GL_TABLE_TOO_LARGE:
-		errorMessage = "GL_TABLE_TOO_LARGE";
-		break;
 	default:
 		errorMessage = "UNKNOWN_ERROR";
 		break;

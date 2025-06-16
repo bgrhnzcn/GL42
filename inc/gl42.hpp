@@ -23,7 +23,7 @@
 #	define HEIGHT 600
 #endif
 
-//#include "OpenGLDecl.hpp"
+#include "OpenGLDecl.hpp"
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "Error.hpp"
