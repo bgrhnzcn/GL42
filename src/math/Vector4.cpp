@@ -33,7 +33,14 @@ gl42::Vector4::Vector4(float x, float y, float z, float w)
 
 gl42::Vector4& gl42::Vector4::operator=(const Vector4& other)
 {
-	return (*this = Vector4(other.x, other.y, other.z, other.w));
+	if (this != &other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		this->z = other.z;
+		this->w = other.w;
+	}
+	return *this;
 }
 
 gl42::Vector4 gl42::Vector4::operator+(const Vector4 &vec)

@@ -4,9 +4,9 @@
 
 void gl42::Debug::Log(const ILogable &obj, Debug::Level level)
 {
-	if (level == ERROR)
+	if (level == Error)
 		std::cout << "\e[1;91m[ERROR]: ";
-	else if (level == WARNING)
+	else if (level == Warning)
 		std::cout << "\e[1;93m[WARNING]: ";
 	else
 		std::cout << "[INFO]: ";
@@ -16,9 +16,9 @@ void gl42::Debug::Log(const ILogable &obj, Debug::Level level)
 
 void gl42::Debug::Log(const std::string &message, gl42::Debug::Level level)
 {
-	if (level == ERROR)
+	if (level == Error)
 		std::cout << "\e[1;91m[ERROR]: ";
-	else if (level == WARNING)
+	else if (level == Warning)
 		std::cout << "\e[1;93m[WARNING]: ";
 	else
 		std::cout << "[INFO]: ";
@@ -28,9 +28,9 @@ void gl42::Debug::Log(const std::string &message, gl42::Debug::Level level)
 
 void gl42::Debug::Log(const int &val, gl42::Debug::Level level)
 {
-	if (level == ERROR)
+	if (level == Error)
 		std::cout << "\e[1;91m[ERROR]: ";
-	else if (level == WARNING)
+	else if (level == Warning)
 		std::cout << "\e[1;93m[WARNING]: ";
 	else
 		std::cout << "[INFO]: ";
@@ -40,9 +40,9 @@ void gl42::Debug::Log(const int &val, gl42::Debug::Level level)
 
 void gl42::Debug::Log(const float &val, gl42::Debug::Level level)
 {
-	if (level == ERROR)
+	if (level == Error)
 		std::cout << "\e[1;91m[ERROR]: ";
-	else if (level == WARNING)
+	else if (level == Warning)
 		std::cout << "\e[1;93m[WARNING]: ";
 	else
 		std::cout << "[INFO]: ";

@@ -57,8 +57,8 @@ void gl42::Shader::readSource()
 
 unsigned int gl42::Shader::compileShader(unsigned int type)
 {
-	const char *code[3];
-	int length;
+	const char* code[3]{};
+	int length = 0;
 	int result;
 	
 	GLCall(unsigned int shader = glCreateShader(type));
@@ -84,31 +84,26 @@ unsigned int gl42::Shader::compileShader(unsigned int type)
 	if (result == GL_NO_ERROR)
 	{
 		GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length));
-		//std::string log;
-		//log.reserve(lenght);
-		//GLCall(glGetShaderInfoLog(shader, length, NULL, log.c_str());
-		//std::cerr
-		//	<< "gl42: Shader: "
-		//	<< m_sourcePath
-		//	<< (type == GL_VERTEX_SHADER ? " vertex shader" : " fragment shader")
-		//	<< " compilation failed."
-		//	<< std::endl;
-		//std::cerr << log << std::endl;
+		char* infoLog = new char[length];
+		GLCall(glGetShaderInfoLog(shader, length, NULL, infoLog));
+		delete[] infoLog;
+		std::cerr
+			<< "gl42: Shader: "
+			<< m_sourcePath
+			<< (type == GL_VERTEX_SHADER ? " vertex shader" : " fragment shader")
+			<< " compilation failed."
+			<< std::endl;
+		std::cerr << infoLog << std::endl;
 	}
 	return shader;
 }
-//
-//void gl42::Shader::combineShader()
-//{
-//	
-//}
-//
-void gl42::Shader::use()
+
+void gl42::Shader::use() const
 {
 	GLCall(glUseProgram(m_shaderId));
 }
 
-unsigned int gl42::Shader::getShaderId()
+unsigned int gl42::Shader::getShaderId() const
 {
 	return m_shaderId;
 }

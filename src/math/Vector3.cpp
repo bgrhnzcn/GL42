@@ -33,7 +33,13 @@ gl42::Vector3::Vector3(float x, float y, float z)
 
 gl42::Vector3& gl42::Vector3::operator=(const Vector3& other)
 {
-	return *this = Vector3(other.x, other.y, other.z);
+	if (this != &other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		this->z = other.z;
+	}
+	return *this;
 }
 
 gl42::Vector3 gl42::Vector3::operator+(const Vector3 &vec)

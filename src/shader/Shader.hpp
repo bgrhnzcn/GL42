@@ -78,8 +78,8 @@ namespace gl42
 			/**
 			 * @brief Use the shader program.
 			 */
-			void use();
-			unsigned int getShaderId();
+			void use() const;
+			unsigned int getShaderId() const;
 	};
 }
 

@@ -20,9 +20,9 @@ namespace gl42
 		public:
 			enum Level
 			{
-				INFO,
-				WARNING,
-				ERROR,
+				Info,
+				Warning,
+				Error,
 			};
 		public:
 			static void Log(const gl42::ILogable &obj, gl42::Debug::Level level);

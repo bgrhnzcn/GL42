@@ -35,7 +35,12 @@ gl42::Vector2::Vector2(float x, float y)
 
 gl42::Vector2& gl42::Vector2::operator=(const Vector2& other)
 {
-	return (*this = Vector2(other.x, other.y));
+	if (this != &other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+	}
+	return *this;
 }
 
 gl42::Vector2 gl42::Vector2::operator+(const Vector2 &vec) const

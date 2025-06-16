@@ -15,6 +15,7 @@
 #include "VertexArray.hpp"
 
 gl42::VertexArray::VertexArray()
+	: vertexArrayID(0)
 {
 	GLCall(glGenVertexArrays(1, &this->vertexArrayID));
 	GLCall(glBindVertexArray(this->vertexArrayID));
