@@ -48,7 +48,7 @@ set(GLAD_REPRODUCIBLE ON CACHE BOOL "" FORCE)
 
 if (EXISTS "${LIB_GLAD_PATH}/CMakeLists.txt")
 	message("GLAD Already Cloned.")
-	add_subdirectory(${LIB_GLAD_PATH})
+	add_subdirectory(${LIB_GLAD_PATH} "${GLAD_OUT_DIR}")
 else ()
 	message("${LIB_GLAD_PATH}")
 	message("Fetching GLAD...")

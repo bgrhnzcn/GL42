@@ -151,7 +151,7 @@ namespace gl42
 			 */
 			static inline float abs(float val)
 			{
-				return ::abs(val);
+				return ::fabs(val);
 			}
 
 			/**
